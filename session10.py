@@ -21,12 +21,30 @@ with st.sidebar:
     - works 24 hours
     - whatsapp:025376478
     - menu:
-    margrita pizaa
+    margrita pizza
     sizes:[small,midium,large]
     margrita prices
     'small':140,
     'midium':240,
     'large':300,
+    
+
+    pepproni pizza
+    sizes:[small,midum,large]
+    pepporni prices
+    'small':140,
+    'midium':240,
+    'large':300,
+    
+
+  ranch pizza
+    sizes:[small,midium,large]
+    ranch prices
+    'small':140,
+    'midium':240,
+    'large':250,
+    
+
 
     '''
 
@@ -98,7 +116,8 @@ with pizza_tab:
         ranch_prices = {
             'Small':170,
             'Medium':200,
-            'Large':230
+            'Large':230,
+            None:0
         }
         # Displaying the price
         ranch_price = ranch_prices[ranch_size]
@@ -121,7 +140,8 @@ with pizza_tab:
         pepperoni_prices = {
             'Small':180,
             'Medium':220,
-            'Large':250
+            'Large':250,
+            None:0
         }
         # Displaying the price
         pepperoni_price = pepperoni_prices[pepperoni_size]
@@ -273,3 +293,38 @@ with drinks_tab:
             max_value=100,
             key='water_qty'
         )
+
+    #final step
+    items=['margrita','pepperoni','ranch','water',
+           'ornage juice','cola','sprite','alfredo',
+           'pesto','bolongese']
+    quantities =[margerita_qty,pepperoni_qty, ranch_qty,
+                 water_qty,orange_juice_qty,cola_qty,sprite_qty,alfredo_qty,pesto_qty,bolognese_qty]
+    st.table(
+        {'item':items,'quantity': quantities}
+
+    )
+
+    with st.bottom:#inside section
+        if st.button('calucate total',type='primary',
+         use_container_width=True):
+            total= (
+                margertia_price*margerita_qty+
+                   ranch_price*ranch_qty +
+                   pepperoni_price*pepperoni_qty +
+                   pesto_price*pesto_qty+
+                   alfredo_price*alfredo_qty +
+                   bolognese_price*bolognese_qty+
+                   water_price*water_qty+
+                   sprite_price*sprite_qty+
+                   cola_price * cola_qty+
+                   orange_juice_price*orange_juice_qty
+                   
+                   )
+            st.subheader(f'total cost = {total} EGP')
+
+
+        
+
+
+
